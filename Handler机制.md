@@ -6,3 +6,9 @@
  简单说就是在主线程的MessageQueue没有消息时，便阻塞在loop的queue.next()中的nativePollOnce()方法里，此时主线程会释放CPU资源进入休眠状态，直到下个消息到达或者有事务发生，通过往pipe管道写端写入数据来唤醒主线程工作。这里采用的epoll机制，是一种IO多路复用机制，可以同时监控多个描述符，当某个描述符就绪(读或写就绪)，则立刻通知相应程序进行读或写操作，本质同步I/O，即读写是阻塞的。 所以说，主线程大多数时候都是处于休眠状态，并不会消耗大量CPU资源。
 
 
+2、Handler是怎么做到消息延时发送的
+
+如果有延迟而且延迟时间没到的，计算下时间，保存为变量nextPollTimeoutMillis
+在没你循环中会判断，如果这个Message有延迟，会调用nativePollOnce(ptr, nextPollTimeoutMillis)进行阻塞
+
+[详细链接： https://blog.csdn.net/qingtiantianqing/article/details/72783952](https://blog.csdn.net/qingtiantianqing/article/details/72783952)
