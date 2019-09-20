@@ -9,6 +9,6 @@
 2、Handler是怎么做到消息延时发送的
 
 如果有延迟而且延迟时间没到的，计算下时间，保存为变量nextPollTimeoutMillis
-在没你循环中会判断，如果这个Message有延迟，会调用nativePollOnce(ptr, nextPollTimeoutMillis)进行阻塞
+然后在循环中会判断，如果这个Message有延迟，会调用nativePollOnce(ptr, nextPollTimeoutMillis)进行阻塞
 
 [详细链接： https://blog.csdn.net/qingtiantianqing/article/details/72783952](https://blog.csdn.net/qingtiantianqing/article/details/72783952)
