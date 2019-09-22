@@ -93,14 +93,14 @@ Glide.with(contentView.getContext())
 7、Glide 怎么绑定页面生命周期的？
 
 ```
-简单说明过程：Glide -> RequestManagerRetriever -> SupportRequestManagerFragment
+简单说明过程：Glide -> RequestManagerRetriever -> RequestManagerFragment
 -> ActivityFragmentLifecycle -> RequestManager -> RequestTracker
 
 1、在 Glide 的get方法中调用 RequestManagerRetriever 的get方法，
    在get中会创建一个空的Fragment，还有RequestManager，并且将Fragment 的生命周期
    传递给 RequestManager。
 
-2、空的Fragment 就是SupportRequestManagerFragment 会在构造方法中创建ActivityFragmentLifecycle
+2、空的Fragment 就是RequestManagerFragment 会在构造方法中创建ActivityFragmentLifecycle
 3、在空的Fragment 的生命周期中会调用 ActivityFragmentLifecycle 的方法，ActivityFragmentLifecycle
    就去调用 RequestManager 的方法，RequestManager 又会去调用 RequestTracker
    
@@ -111,7 +111,7 @@ ActivityFragmentLifecycle 再去调用 RequestManager 再去调用Glide请求。
 与Glide请求的绑定。页面消失，那么Glide 也结束了。
 
 备注：
-RequestManagerRetriever 是作为 SupportRequestManagerFragment 和 RequestManager 的桥梁
+RequestManagerRetriever 是作为 RequestManagerFragment 和 RequestManager 的桥梁
 
 ```
 
