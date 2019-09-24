@@ -24,3 +24,6 @@ Android与JS通过WebView互相调用方法，实际上是：
 (2)解析该 url 的协议
 (3)如果检测到是预先约定好的协议，就调用相应方法
  ```
+ [Js 调 Android -》https://www.jianshu.com/p/5d7306b57ce3](https://www.jianshu.com/p/5d7306b57ce3)
+
+ [Android 调 Js -》https://www.jianshu.com/p/00c5b661e342](https://www.jianshu.com/p/00c5b661e342)
