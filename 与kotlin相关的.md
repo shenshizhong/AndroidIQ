@@ -162,5 +162,5 @@ fun hello(){println("hello!")}
 1、在kotlin中，函数是一种类型，我们可以把具体的函数当成对象。
 2、lambda表达式就是一个匿名函数
 3、高阶函数就是在函数的参数中，声明传入参数的类型和返回的类型
-
 ```
+[详细地址：https://www.jianshu.com/p/1937d532a120](https://www.jianshu.com/p/1937d532a120)
