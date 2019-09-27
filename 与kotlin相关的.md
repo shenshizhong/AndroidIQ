@@ -122,7 +122,45 @@ Kotlin 的类型系统旨在从我们的代码中消除 NullPointerException
 ```
 [详细地址：https://www.kotlincn.net/docs/reference/null-safety.html](https://www.kotlincn.net/docs/reference/null-safety.html)
 
- 
+8、lateinit 和 by lazy 的区别？
+```
+lateinit 只用于变量 var，而 lazy 只用于常量 val.
+lazy 应用于单例模式(if-null-then-init-else-return)，
+而且当且仅当变量被第一次调用的时候，委托方法才会执行
 
+```
+9、怎么自定义一个高级函数？
+```
+高阶函数的特点：
+1、参数是函数（参数是lambda，也就是函数）
 
+   fun shop(girl: String，play:()-> Unit){
+   
+       println("女朋友：$girl")
+       play()
+       
+   }
+   
+2、或者返回值是函数
 
+   fun decor(func: ()-> Unit): Unit{
+   
+       fun funcPlus(){
+           println("hello")
+           func()
+       }
+       
+       return funcPlus()
+   }
+怎么进行传参数的：
+decor{ println("hello!")}       //传递的是一个lambda
+
+decor{::hello}                  //传递一个普通函数
+fun hello(){println("hello!")}
+
+总的来说：
+1、在kotlin中，函数是一种类型，我们可以把具体的函数当成对象。
+2、lambda表达式就是一个匿名函数
+3、高阶函数就是在函数的参数中，声明传入参数的类型和返回的类型
+
+```
