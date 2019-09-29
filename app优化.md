@@ -72,6 +72,7 @@ Gzip压缩：使用Gzip来压缩request和response, 减少传输数据量, 从�
 5、使用WebP图片，可以替代 JPEG 和 PNG 格式图片并且通常可以减少 30% 的文件大小
 ```
 [官方地址：https://developer.android.com/topic/performance/reduce-apk-size.html](https://developer.android.com/topic/performance/reduce-apk-size.html)
+
 7、内存使用上的优化有哪些？
 ```
 1、避免创建不必要的对象
