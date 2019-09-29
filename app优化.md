@@ -55,11 +55,23 @@ Gzip压缩：使用Gzip来压缩request和response, 减少传输数据量, 从�
 ```
 6、怎么缩小APK包大小呢？
 ```
-1、使用proguard混淆代码，它会对不用的代码做优化，并且混淆后也能够减少安装包的大小。
+1、build.gradle 中启用压缩、混淆和优化功能
+    minifyEnabled true        //压缩代码
+    shrinkResources true      //去掉不用的资源文件
+    resConfig  "en"           //指定语言，移除其他不用的备用语言
+    proguardFiles             //使用proguard混淆代码，混淆处理的目的是通过
+                                缩短应用的类、方法和字段的名称来减小应用的大小。
 2、tinypng对图片进行进一步的压缩预处理。
+   aaptOptions {
+    cruncherEnabled = false   //关闭Android Studio的PNG合法性检查的，直接不让它检查
+                              //如果你的图片已经优化过了， 再次使用 cruncher 
+                                可能会导致图片变大。
+   }
 3、图片资源选择xxhdpi即可
 4、能用代码绘制实现的功能，尽量不要使用大量的图片
+5、使用WebP图片，可以替代 JPEG 和 PNG 格式图片并且通常可以减少 30% 的文件大小
 ```
+[官方地址：https://developer.android.com/topic/performance/reduce-apk-size.html](https://developer.android.com/topic/performance/reduce-apk-size.html)
 7、内存使用上的优化有哪些？
 ```
 1、避免创建不必要的对象
@@ -71,6 +83,12 @@ Gzip压缩：使用Gzip来压缩request和response, 减少传输数据量, 从�
 3、重写Activity的onTrimMemory()，可以在手机内存降低的时候及时通知我们，
    根据传入的级别来去决定如何释放应用程序的资源。
 4、读取一个Bitmap图片的时候，可以进行图片压缩。
+5、不要过多的使用枚举，枚举占用的内存空间要比静态常量大
+6、常量用static final 来修饰（只分配一次内存，相当于全局变量）
+7、使用android 特有的数据结构，比如 SparseArray 和 Pair
+8、尽量采用静态内部类，避免内部类潜在的内存泄漏
+
 ```
+[官方建议：https://developer.android.com/topic/performance/memory#Overhead](https://developer.android.com/topic/performance/memory#Overhead)
 
 
