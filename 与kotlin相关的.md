@@ -164,3 +164,10 @@ fun hello(){println("hello!")}
 3、高阶函数就是在函数的参数中，声明传入参数的类型和返回的类型
 ```
 [详细地址：https://www.jianshu.com/p/1937d532a120](https://www.jianshu.com/p/1937d532a120)
+
+10、为什么父类名称后面要一个空的括号？
+```
+代表显示调用父类的无参构造方法（接口是不能实例的，所以就不用带括号）
+class RadioButton: Button()
+
+```
