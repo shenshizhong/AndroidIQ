@@ -94,3 +94,12 @@ Gzip压缩：使用Gzip来压缩request和response, 减少传输数据量, 从�
 
 [枚举类占用内存原因：https://blog.csdn.net/xiao_nian/article/details/80002101](https://blog.csdn.net/xiao_nian/article/details/80002101)
 
+8、如何使用工具检查应用的性能？
+```
+使用as自带的工具 profiler
+1、可以检查cpu使用情况
+2、内存使用情况
+3、网络请求速度
+4、耗电量情况
+```
+[android-profiler 的使用：](https://developer.android.com/studio/profile/android-profiler?hl=zh-cn)
