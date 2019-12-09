@@ -40,13 +40,7 @@ Glide.get(this).clearDiskCache();
 Glide.with(this).clear(imageView);
 ```
 
-4、Glide 怎么和Activity 和 Fragment 绑定生命周期的？
-```
-LifecycleListener
-
-```
-
-5、Glide 中 override 与 submit 都是重置图片大小，他们有什么区别？
+4、Glide 中 override 与 submit 都是重置图片大小，他们有什么区别？
 ```
 RequestOptions override(int width, int height) 
 override 是在RequestOptions 中的方法，主要是重置图片大小，用于显示用
@@ -57,7 +51,7 @@ FutureTarget<TranscodeType> submit(int width, int height)
 
 
 ```
-6、怎么通过一个地址判断图片的格式？
+5、怎么通过一个地址判断图片的格式？
 ```
 String filePath = file.getPath();
 BitmapFactory.Options options = new BitmapFactory.Options();
@@ -90,7 +84,7 @@ Glide.with(contentView.getContext())
                        }
 
 ```
-7、Glide 怎么绑定页面生命周期的？
+6、Glide 怎么绑定页面生命周期的？
 
 ```
 简单说明过程：Glide -> RequestManagerRetriever -> RequestManagerFragment
@@ -115,4 +109,6 @@ RequestManagerRetriever 是作为 RequestManagerFragment 和 RequestManager 的�
 
 ```
 
-
+7、Glide 的缓存设计是怎么的？
+```
+```
