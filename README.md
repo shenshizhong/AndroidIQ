@@ -3,7 +3,7 @@ Android 面试题 及 实战记录
 
 Android
 面试题，虽说是面试题，但里头有很多最近笔记，如果不是面试的同学，看看对你的当下的项目
-开发应该也有启发，主要是开发中遇到的知识点，碰到的坑，还有实用的技巧。
+开发应该也有启发。主要是开发中遇到的知识点，碰到的坑，还有实用的技巧。
 
 ![image](https://github.com/shenshizhong/AndroidIQ/blob/master/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98.jpg)
 
