@@ -12,3 +12,13 @@ String joinToString(Collection<T> collection, String separator)
 假设函数声明在StringUtil.Kt文件中，java 是这么去调用的：
 char c = StringUtilKt.lastChar("abcd")
 ```
+java 的getClass()
+```
+怎么用kotlin表示？用.javaClass
+
+比如：
+val set = hashSetOf(1,2,4)
+>>>println(set.javaClass)
+class java.util.HashSet
+
+```
