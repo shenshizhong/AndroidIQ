@@ -12,3 +12,29 @@ String joinToString(Collection<T> collection, String separator)
 假设函数声明在StringUtil.Kt文件中，java 是这么去调用的：
 char c = StringUtilKt.lastChar("abcd")
 ```
+java 中怎么调用顶层函数
+```
+kotlin 中顶层函数会被编译成静态函数，直接调用即可。
+
+package strings
+fun joinToString(...): String{...}
+
+在java中调用如下：
+JoinKt.joinToString(list,",","","");
+
+怎么修改文件类名
+@file：JvmName（"StringFunctions"）    //注解指定类名
+package strings
+fun joinToString(...): String{...}
+
+StringFunctions.joinToString(list,",","","");   //在java 中的调用
+```
+
+
+
+kotlin 怎么定义常量？
+```
+const val UNIX_LINE_SEPARATOR = "\n"
+等同
+public static final string UNIX_LINE_SEPARATOR = "\n"
+```
