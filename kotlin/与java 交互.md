@@ -12,6 +12,7 @@ String joinToString(Collection<T> collection, String separator)
 假设函数声明在StringUtil.Kt文件中，java 是这么去调用的：
 char c = StringUtilKt.lastChar("abcd")
 ```
+
 java 中怎么调用顶层函数
 ```
 kotlin 中顶层函数会被编译成静态函数，直接调用即可。
@@ -32,9 +33,22 @@ StringFunctions.joinToString(list,",","","");   //在java 中的调用
 
 
 
+--------------------------kotin 调用 java-------------------
+
 kotlin 怎么定义常量？
 ```
 const val UNIX_LINE_SEPARATOR = "\n"
 等同
 public static final string UNIX_LINE_SEPARATOR = "\n"
+```
+
+java 的getClass()
+```
+怎么用kotlin表示？用.javaClass
+
+比如：
+val set = hashSetOf(1,2,4)
+>>>println(set.javaClass)
+class java.util.HashSet
+
 ```
