@@ -6,6 +6,7 @@
 String joinToString(Collection<T> collection);
 String joinToString(Collection<T> collection, String separator)
 ...
+[详细地址：https://www.jianshu.com/p/72d1959a7c56](https://www.jianshu.com/p/72d1959a7c56)
 ```
 2、java 中调用扩展函数
 ```
