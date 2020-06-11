@@ -10,3 +10,12 @@ gradle 插件版本说明
 会有很多AS新的功能的介绍
 ```
 [详细地址：https://developer.android.com/studio/releases](https://developer.android.com/studio/releases)
+
+创建类的模版声明
+```
+VISIBILITY   ->   PUBLIC 或 PACKAGE_PRIVATE
+ABSTRACT     ->   TRUE 或 FALSE
+FINAL        ->   TRUE 或 FALSE
+
+```
+[详细地址：https://developer.android.com/studio/write/create-java-class?hl=zh-cn](https://developer.android.com/studio/write/create-java-class?hl=zh-cn)
