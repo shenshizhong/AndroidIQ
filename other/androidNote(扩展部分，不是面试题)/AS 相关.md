@@ -25,3 +25,13 @@ FINAL        ->   TRUE 或 FALSE
 搜索命令：
 find . -name '*.jar' -exec zipgrep -i WebViewClient {} \;
 ```
+
+Live TempLates（代码模板）
+```
+搜索 Live TempLates
+Abbreviation  输入： SL
+Description  输入： 打印日志
+Template text： 输入： Log.e("ssz","=============$tag$" + "$content$")
+记得 define 选择一下你要应用的区域 就行了
+```
+[详细地址：https://blog.csdn.net/u010126792/article/details/94581801](https://blog.csdn.net/u010126792/article/details/94581801)
