@@ -19,3 +19,9 @@ FINAL        ->   TRUE 或 FALSE
 
 ```
 [详细地址：https://developer.android.com/studio/write/create-java-class?hl=zh-cn](https://developer.android.com/studio/write/create-java-class?hl=zh-cn)
+
+1、搜索 WebViewClient 相关类的命令
+```
+搜索命令：
+find . -name '*.jar' -exec zipgrep -i WebViewClient {} \;
+```
