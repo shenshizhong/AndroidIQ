@@ -118,7 +118,7 @@ Kotlin 的类型系统旨在从我们的代码中消除 NullPointerException
 2、安全调用操作符，写作 ?.
 3、通过 Elvis 操作符表达，写作 ?:
 4、非空断言运算符（!!）
-5、使用安全的类型转换 as？
+5、使用安全的类型转换 as？  //如果类型不兼容，就会返回null
 ```
 [详细地址：https://www.kotlincn.net/docs/reference/null-safety.html](https://www.kotlincn.net/docs/reference/null-safety.html)
 
