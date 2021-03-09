@@ -35,3 +35,16 @@ Template text： 输入： Log.e("ssz","=============$tag$" + "$content$")
 记得 define 选择一下你要应用的区域 就行了
 ```
 [详细地址：https://blog.csdn.net/u010126792/article/details/94581801](https://blog.csdn.net/u010126792/article/details/94581801)
+
+一键格式化所有代码
+```
+两种方法：
+一、
+选中要格式化的包，点击右键，然后reformat code
+
+二、
+选中要格式化的包，点击code，然后reformat code
+
+
+```
+[详细地址：https://blog.csdn.net/xiyangyang8110/article/details/77697600](https://blog.csdn.net/xiyangyang8110/article/details/77697600)
