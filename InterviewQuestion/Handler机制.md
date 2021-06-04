@@ -22,3 +22,23 @@
 然后在循环中会判断，如果这个Message有延迟，会调用nativePollOnce(ptr, nextPollTimeoutMillis)进行阻塞
 ```
 [详细链接： https://blog.csdn.net/qingtiantianqing/article/details/72783952](https://blog.csdn.net/qingtiantianqing/article/details/72783952)
+
+3、为什么默认创建出来的Handler是运行在主线程的？
+```
+使用空参数构建出来的Handler，默认使用UI线程中的Looper。
+通过Looper.loop()取出来的消息在handMessage中进行处理时，是在UI线程中处理的。
+
+```
+为什么线程间可以进行通信？
+```
+主要是用了Looper
+
+```
+post 是在运行在哪个线程？
+```
+1、view 的 post方法，运行在主线程
+2、handler 里面的post，运行在handler 依附的线程，可能是主线程，也可能是其他线程
+
+注意点：如果是view.post, 由于不是在新的线程中使用，所有不要做耗时的操作（会增加主线程的工作量）。
+```
+[详细地址：https://blog.csdn.net/xiaoyu490697/article/details/7317396?spm=1001.2014.3001.5502](https://blog.csdn.net/xiaoyu490697/article/details/7317396?spm=1001.2014.3001.5502)
