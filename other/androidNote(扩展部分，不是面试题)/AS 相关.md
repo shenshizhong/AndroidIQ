@@ -48,3 +48,10 @@ Template text： 输入： Log.e("ssz","=============$tag$" + "$content$")
 
 ```
 [详细地址：https://blog.csdn.net/xiyangyang8110/article/details/77697600](https://blog.csdn.net/xiyangyang8110/article/details/77697600)
+
+Clean Project与 Rebuild Project 区别
+```
+Rebuild 会先执行 Clean 再执行其他，Rebuild 更彻底。
+
+```
+[详细地址：https://www.jianshu.com/p/7a18eea2415f](https://www.jianshu.com/p/7a18eea2415f)
