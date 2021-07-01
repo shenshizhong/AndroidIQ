@@ -72,4 +72,6 @@ Could not create task ':app:Test5.main()'.
     <option name="delegatedBuild" value="false"/>    //增加这行代码就可以了
  </GradleProjectSettings>
 
+备注，加那行代码的意思：不委托gradle进行构建。让jvm执行Java类的main方法，而不是让gradle当做task来执行。
+
 ```
