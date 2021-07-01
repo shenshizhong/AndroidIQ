@@ -1,4 +1,7 @@
 
+AS 相关
+
+
 gradle 插件版本说明
 ```
 编译出错的时候，检查gradle 对应的版本
@@ -55,3 +58,18 @@ Rebuild 会先执行 Clean 再执行其他，Rebuild 更彻底。
 
 ```
 [详细地址：https://www.jianshu.com/p/7a18eea2415f](https://www.jianshu.com/p/7a18eea2415f)
+
+AS 直接运行java文件报错
+```
+Could not create task ':app:Test5.main()'.
+   > SourceSet with name 'main' not found.
+
+解决方法：
+
+项目—> .idea -> gradle.xml， 在这个文件中，加入一行代码就行：
+
+ <GradleProjectSettings>
+    <option name="delegatedBuild" value="false"/>    //增加这行代码就可以了
+ </GradleProjectSettings>
+
+```
