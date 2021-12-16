@@ -75,3 +75,10 @@ Could not create task ':app:Test5.main()'.
 备注，加那行代码的意思：不委托gradle进行构建。让jvm执行Java类的main方法，而不是让gradle当做task来执行。
 
 ```
+查看编译后的class文件
+```
+在项目的app-> build -> intermediates -> javac -> debug
+就能找到编译后的class 文件
+
+```
+[详细地址：https://blog.csdn.net/xueyoubangbang/article/details/90054910](https://blog.csdn.net/xueyoubangbang/article/details/90054910)
