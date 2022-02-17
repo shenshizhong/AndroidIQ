@@ -1,4 +1,4 @@
-HybridApp WebView和JS交互
+HybridApp WebView和JS交互 (原生与h5的交互)
 
 Android与JS通过WebView互相调用方法，实际上是：
 
