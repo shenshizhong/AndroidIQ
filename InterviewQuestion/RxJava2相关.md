@@ -18,3 +18,13 @@ as(LifecycleOwnerowner owner) 方法，接收的是一个LifecycleOwner接口对
 Activity/Fragment就实现了这个接口
 
 ```
+RxJava2 会内存泄漏而OkHttp一般不会。
+```
+RxJava2 是因为页面销毁，但RxJava2 还在进行耗时操作，没有取消请求，导致了内存泄漏。
+OkHttp 直接在onStop 调用cancel  就可以了，就不会导致内存泄漏。
+RxJava2 每次请求都得到 Observable 对象，要在onStop中unsubscribe取消，不利封装，代码量会很多，所以需要第三方来解决。
+
+第三方使用RxLifecycle，但更建议用AutoDispose。（https://www.jianshu.com/p/4b25ac968afe）
+
+```
+[详细地址：https://www.songbingjia.com/tech/show-98306.html](https://www.songbingjia.com/tech/show-98306.html)
