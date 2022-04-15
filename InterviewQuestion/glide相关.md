@@ -11,9 +11,9 @@ RequestOptions options = new RequestOptions()
         .diskCacheStrategy(DiskCacheStrategy.NONE);
         
 磁盘缓存
-RequestOptions options = new RequestOptions()
-        // 既缓存原始图片，又缓存转化后的图片
-        .diskCacheStrategy(DiskCacheStrategy.ALL);
+RequestOptionsoptions=newRequestOptions()
+//既缓存原始图片，又缓存转化后的图片
+.diskCacheStrategy(DiskCacheStrategy.ALL);
 ```
 2、Glide 硬盘缓存的方式有哪几种？
 
