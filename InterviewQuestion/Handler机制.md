@@ -97,3 +97,12 @@ public void dispatchMessage(@NonNUll Message msg){
 总的来说：就是在enqueueMessage（）中进行赋值 -> 在loop中取出该对象，并进行回调。
 
 ```
+为什么可以通过Handler来进行线程间通信？
+```
+主要功劳是Looper。
+主线程有一套Message 机制，子线程也有自己一套Message机制，有自己的MessageQueue，Looper，Handler。
+Looper 在派发Message 的时候，会根据Message 的意愿（target，就是目标Handler），
+派发给对应的Handler去处理，这个Handler 可以是子线程的Handler，也可以是主线程的Handler。
+一般我们在Activity 使用的就是主线程的Handler。
+
+```
