@@ -6,15 +6,29 @@
  通过循环方式不同与Binder驱动进行读写操作，当然并非简单的死循环，无消息时会休眠，但是死
  循环又如何处理其他事物呢？？通过创建新的线程。真正卡死主线程操作的是在回调方法onCreate、
  onStart、onResume等操作时间过长，会导致掉帧甚至ANR，Looper.loop()本身不会导致应用卡死。
- 
- 
- 简单说就是在主线程的MessageQueue没有消息时，便阻塞在loop的queue.next()中
- 的nativePollOnce()方法里，此时主线程会释放CPU资源进入休眠状态，直到下个消息到达
- 或者有事务发生，通过往pipe管道写端写入数据来唤醒主线程工作。这里采用的epoll机制，
- 是一种IO多路复用机制，可以同时监控多个描述符，当某个描述符就绪(读或写就绪)，
- 则立刻通知相应程序进行读或写操作，本质同步I/O，即读写是阻塞的。 所以说，主线程大多数时候
- 都是处于休眠状态，并不会消耗大量CPU资源。
 ```
+主线程的死循环一直在运行，是不是特别消耗CPU资源？
+```
+这里涉及Linux pipe/epoll(也就是管道和IO事件的通知机制)。
+简单的说就是MessageQueue 没有消息的时候，就阻塞在loop的queue.next中的
+nativePollOne() 方法里。这个时候主线程就会释放CPU资源进入休眠状态。
+那么主线程怎么被唤醒的呢？
+等到下一个消息或者有事务操作的时候，通过pipe管道写入数据来唤醒主线程工作。
+这采用的epoll机制（也就是IO事件通知机制），是一种IO多路复用机制，可以同时控制
+多个描述符，当某个描述符就绪（读或写准备就绪），则通知相应的程序进行读或者写操作，
+本质同步I/0，所以读写是阻塞的。所以主线程大多数情况下是处于休眠的状态的，并不会
+消耗大量的CPU资源。
+
+```
+
+
+ android 主线程是用来做什么的？
+```
+ 主线程主要是用来运行四大组件，以及处理它们和用户的额交互。
+ 子线程主要用来执行耗时的操作，比如网络请求，i/O操作(也就是文件输入输出流的操作)。
+```
+[详细地址：https://blog.csdn.net/weixin_38196407/article/details/106426942](https://blog.csdn.net/weixin_38196407/article/details/106426942)
+
 
 2、Handler是怎么做到消息延时发送的
 ```
@@ -42,3 +56,40 @@ post 是在运行在哪个线程？
 注意点：如果是view.post, 由于不是在新的线程中使用，所有不要做耗时的操作（会增加主线程的工作量）。
 ```
 [详细地址：https://blog.csdn.net/xiaoyu490697/article/details/7317396?spm=1001.2014.3001.5502](https://blog.csdn.net/xiaoyu490697/article/details/7317396?spm=1001.2014.3001.5502)
+
+loop 执行的时候，是怎么回调Handler中的 handlerMessage()?
+```
+sendMessageDelayed()->sendMessageAtTime()->enqueueMessage() 这里是关键，
+private boolean enqueueMessage(@NonNull MessageQueue queue,
+@NonNUll Message msg, long uptimeMills){
+    msg.target = this;//这里是关键，这里是把当前的Handler赋值给了msg.target
+}
+
+再看Looper.class 中的 loop 方法：
+public static void loop(){
+     for(;;){
+        Message msg = queue.next; //可能阻塞
+        ...
+        try{
+          msg.target.dispatchMessage(msg)  //这里我们拿到了Handler进行了调用
+        }catch{
+        }
+     }
+}
+
+Handler 中的方法 dispatchMessage():
+public void dispatchMessage(@NonNUll Message msg){
+    if(msg.callback != null){
+        handleCallBack(msg);
+    }else{
+      if(mCallback != null){
+        if(mCallback.handlerMessage(msg){
+          return;
+        }
+      }
+      handlerMessage(msg)  //这里就回调了，一般情况下，我们在Activity中定义的 Handler 中的handlerMessage方法。
+    }
+}
+总的来说：就是在enqueueMessage（）中进行赋值 -> 在loop中取出该对象，并进行回调。
+
+```
