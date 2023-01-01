@@ -74,7 +74,26 @@ Could not create task ':app:Test5.main()'.
 
 备注，加那行代码的意思：不委托gradle进行构建。让jvm执行Java类的main方法，而不是让gradle当做task来执行。
 
+添加完如果不生效，要rebuild 下项目。
+
 ```
+如果使用java命令，提示找不到或无法加载主类
+```
+首先执行javac命令
+sszdeMacBook-Pro:TestDemo ssz$ javac /Users/ssz/test/TestDemo/app/src/main/java/com/ssz/testdemo/TestMain.java
+这个时候，在TestMain.java 的根目录，就会生成一个.class文件。
+
+接下来很关键：
+就是你要通过cd，进入到对应的目录才能执行java命令。（也就是cd到包名的位置，只能到这个位置哦）
+sszdeMacBook-Pro:TestDemo ssz$ cd app
+sszdeMacBook-Pro:app ssz$ cd src/main
+sszdeMacBook-Pro:main ssz$ cd java
+sszdeMacBook-Pro:java ssz$ java com.ssz.testdemo.TestMain
+输出结果：[Ljava.lang.String;@7852e922
+
+```
+
+
 查看编译后的class文件
 ```
 在项目的app-> build -> intermediates -> javac -> debug
