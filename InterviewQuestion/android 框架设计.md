@@ -12,7 +12,7 @@ Hardware Abstraction Layer(HAL)
 Linux Kernel
 
 DEX 文件是什么？
-DEX 是专门为android 设计的字节码格式
+DEX 是专门为android 设计的字节码格式，使用的内存很少。
 
 JVM 是java虚拟机，用来运行java 字节码。
 ART 是什么呢？（Android Runtime）
