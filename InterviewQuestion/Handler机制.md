@@ -106,3 +106,24 @@ Looper 在派发Message 的时候，会根据Message 的意愿（target，就是
 一般我们在Activity 使用的就是主线程的Handler。
 
 ```
+
+```
+在进入死循环之前，会创建一个新Binder线程
+thread.attach(false); //创建一个线程，具体是指ApplicationThread
+
+为什么进入死循环之前要创建一个线程呢？
+通过ApplicationThread 通过Handler将Message 发送给主线程，然后去启动Activity。
+怎么启动Activity的呢？
+通过反射机制，创建一个Activity实例，然后执行onCreate。
+
+```
+深入理解nativePollOnce
+```
+```
+[详细地址：https://www.jianshu.com/p/57a426b8f145](https://www.jianshu.com/p/57a426b8f145)
+
+怎么实现延时的？
+```
+通过native 层设置epoll_wait 的超时事件，超时之后，就会唤醒线程，开始处理消息队列中的消息。
+
+```
